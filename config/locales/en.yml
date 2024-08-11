@@ -28,4 +28,14 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  sections:
+    introduction:
+      title: 'The Cheapest Textbooks'
+      subtitle: 'Save Up To 90% On Millions Of Titles'
+    commitment:
+      title: 'Our Commitment'
+    clients:
+      title: 'Trusted By Awesome Clients'
+
+
+  

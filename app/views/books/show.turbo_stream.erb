@@ -1,0 +1,11 @@
+<%= turbo_stream.replace('page_content') do %>
+  <%= turbo_frame_tag 'page_content' do %>
+    <section class="flex flex-col py-24">
+      <% if @book.blank? %>
+        <%= render partial: 'shared/error_message', locals: { message: "ISBN not found" } %>
+      <% else %>
+        <%= render partial: 'books/partials/book_details', locals: { book: @book } %>
+      <% end %>
+    </section>
+  <% end %>
+<% end %>

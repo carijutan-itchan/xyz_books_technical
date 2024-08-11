@@ -9,6 +9,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xl': '1314px'
+      },
+      backgroundImage:{
+        'banner': "url('banner-bg.png')",
+        'promo': "url('promo.png')",
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },

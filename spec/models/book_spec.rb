@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe Book do
-  let(:book) { create(:book) }
-
   it 'has a valid book' do
     expect(build(:book)).to be_valid
   end
@@ -20,6 +18,14 @@ describe Book do
       it { expect(build(:book, isbn_number:)).not_to be_valid }
     end
 
+    context 'when isbn number is duplicated' do
+      before { create(:book, isbn_number: '123123') }
+
+      let(:isbn_number) { '123123' }
+
+      it { expect(build(:book, isbn_number:)).not_to be_valid }
+    end
+
     context 'when price is not present' do
       let(:price) { nil }
 
@@ -32,24 +38,24 @@ describe Book do
       it { expect(build(:book, publish_at:)).not_to be_valid }
     end
 
-    context 'when author is not present' do
-      let(:author) { nil }
+    context 'when publisher is not present' do
+      let(:publisher) { nil }
 
-      it { expect(build(:book, author:)).not_to be_valid }
+      it { expect(build(:book, publisher:)).not_to be_valid }
     end
   end
 
-  describe '#at_least_one_publisher' do
-    context 'when book does not have publisher' do
-      let(:publishers) { [] }
+  describe '#at_least_one_author' do
+    context 'when book does not have author' do
+      let(:authors) { [] }
 
-      it { expect(build(:book, publishers:)).not_to be_valid }
+      it { expect(build(:book, authors:)).not_to be_valid }
     end
 
-    context 'when book does have publisher' do
-      let(:publishers) { build_list(:publisher, 1) }
+    context 'when book does have author' do
+      let(:authors) { build_list(:author, 1) }
 
-      it { expect(build(:book, publishers:)).to be_valid }
+      it { expect(build(:book, authors:)).to be_valid }
     end
   end
 end

@@ -1,16 +1,29 @@
 class Book < ApplicationRecord
-  belongs_to :author
-  has_many :book_publishers
-  has_many :publishers, through: :book_publishers
+  has_one_attached :book_cover
 
-  validates :title, :isbn_number, :price, :publish_at, presence: true
-  validate :at_least_one_publisher
+  belongs_to :publisher
+
+  has_many :book_authors
+  has_many :authors, through: :book_authors
+
+  validates :title, :price, :publish_at, :publisher, presence: true
+  validates :isbn_number_10, presence: true, uniqueness: true
+  validates :isbn_number_13, presence: true, uniqueness: true
+  validate :at_least_one_author
+
+  def self.search_by_isbn(isbn_number)
+    isbn_10 = find_by(isbn_number_10: isbn_number)
+
+    return isbn_10 if isbn_10.present?
+
+    find_by(isbn_number_13: isbn_number)
+  end
 
   private
 
-  def at_least_one_publisher
-    if publishers.empty?
-      errors.add(:publishers, "need at least one publishers")
+  def at_least_one_author
+    if authors.empty?
+      errors.add(:authors, "need at least one publishers")
     end
   end
 end

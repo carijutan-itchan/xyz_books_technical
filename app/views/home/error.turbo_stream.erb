@@ -1,0 +1,7 @@
+<%= turbo_stream.replace('page_content') do %>
+  <%= turbo_frame_tag 'page_content' do %>
+    <section class="flex flex-col py-36">
+      <%= render partial: 'shared/error_message', locals: { message: params[:message] } %>
+    </section>
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="w-full block">
+  <button type="button" class="text-[#6161f2] py-5 font-medium flex justify-between rtl:text-right w-full items-center gap-x-72 px-10">
+    <span class="text-lg"><%= title %></span>
+    <i class="fa-solid fa-chevron-<%= icon_position %>"></i>
+  </button>
+
+  <%= turbo_frame_tag 'accordion_body' %>
+</div>

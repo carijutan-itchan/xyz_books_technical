@@ -1,0 +1,58 @@
+<div class="h-[7vh] bg-promo bg-contain"></div>
+
+<nav class="bg-[#fcfcfc] border-gray-200 h-auto w-auto mt-2 tracking-wide">
+  <div class="max-w-screen-3xl flex flex-wrap items-center justify-between mx-10 p-4">
+    <div class="col-span-1 text-right">
+      <img src="/xyz-logo.svg" class="h-full" />
+    </div>
+
+      <div class="flex xl:order-1 text-center justify-end xl:justify-normal" data-controller="search"> 
+        <div class="relative hidden xl:block">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+            <span class="sr-only">Search icon</span>
+          </div>
+
+          <input type="text" class="block w-[150%] p-2 ps-10 text-sm text-gray-900 border border-[#5465e7] rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search" data-action="keyup->search#searchBookNumber">
+        </div>
+
+        <button type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-search" aria-expanded="false">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+      </div>
+
+      <div class="items-center justify-between hidden w-full p-4 rounded-xl xl:flex xl:w-auto xl:order-1 bg-gray-50 xl:bg-transparent lg-p-0">
+        <div class="relative mt-3 xl:hidden">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
+        </div>
+        
+        <ul class="flex flex-col p-4 xl:p-0 mt-4 mr-4 font-medium rounded-lg xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0">
+          <li>
+            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:px-4">Home</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:px-4">Rent Textbooks</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:px-4">Buy Textbooks</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:px-4">Sell Textbooks</a>
+          </li>
+        </ul>
+
+        <div class="h-5 border border-gray-300 hidden xl:flex"></div>
+  
+        <div class="items-center flex ml-5">
+          <a href="#" class="block py-2 px-5 text-gray-900 rounded hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">
+            <i class="fa-solid fa-globe text-[#5fd2fa] fa-lg"></i> En
+          </a>
+
+          <button class="text-white bg-[#4b64ff] hover:bg-[#2c3fb2] focus:ring-4 focus:ring-blue-300 font-medium rounded-xl text-sm px-6 py-4 ml-5 shadow-[#697dfc] shadow-lg"> Contact </button>
+        </div>
+      </div>
+  </div>
+</nav>

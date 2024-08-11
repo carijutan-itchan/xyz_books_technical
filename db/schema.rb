@@ -50,25 +50,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_075716) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "book_publishers", force: :cascade do |t|
+  create_table "book_authors", force: :cascade do |t|
     t.bigint "book_id", null: false
-    t.bigint "publisher_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_book_publishers_on_book_id"
-    t.index ["publisher_id"], name: "index_book_publishers_on_publisher_id"
+    t.index ["author_id"], name: "index_book_authors_on_author_id"
+    t.index ["book_id"], name: "index_book_authors_on_book_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string "title", limit: 255, null: false
-    t.string "isbn_number", limit: 100, null: false
+    t.string "isbn_number_13", limit: 100, null: false
+    t.string "isbn_number_10", limit: 100, null: false
     t.float "price", null: false
     t.datetime "publish_at", null: false
     t.string "edition", limit: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "author_id"
-    t.index ["author_id"], name: "index_books_on_author_id"
+    t.bigint "publisher_id"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -79,7 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_06_075716) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "book_publishers", "books"
-  add_foreign_key "book_publishers", "publishers"
-  add_foreign_key "books", "authors"
+  add_foreign_key "book_authors", "authors"
+  add_foreign_key "book_authors", "books"
+  add_foreign_key "books", "publishers"
 end
