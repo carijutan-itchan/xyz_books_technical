@@ -2,9 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 import { get } from "@rails/request.js"
 
 export default class extends Controller {
+  static targets = [ 'searchNav' ]
+
   initialize(){
     this.validatedIsbnNumber = 0
-    this.searcValue = ''
     this.error_message = ''
   }
 
@@ -21,7 +22,6 @@ export default class extends Controller {
     }
 
     if(is_valid){
-      this.search_value = searcValue
       const validatedSearchNumberArr = this.validatedIsbnNumber.split("")
       const isbn_number = this.calculate_book_number(validatedSearchNumberArr)
 
@@ -100,14 +100,14 @@ export default class extends Controller {
     },0);
 
     const checkDigit = 10 - (sum % 10)
-    concated_numbers[13] = checkDigit
+    concated_numbers[13] = (sum % 10) == 0 ? 0 : checkDigit
 
     return concated_numbers.join("")
   }
 
   showErrorDetails(){
     setTimeout(() => {
-      get('/error?' + new URLSearchParams({ message: this.error_message}).toString(), { responseKind: "turbo-stream" })
+      get('/not_found?' + new URLSearchParams({ message: this.error_message}).toString(), { responseKind: "turbo-stream" })
     }, "100");
   }
 
@@ -123,7 +123,11 @@ export default class extends Controller {
 
   showIsbnDetails(number){
     setTimeout(() => {
-      get(`/books/${number}?` + new URLSearchParams({ search_value: this.searcValue}).toString(), { responseKind: "turbo-stream" })
+      get(`/books/${number}`, { responseKind: 'turbo-stream' })
     }, "100");
+  }
+
+  toggleSearchNav(){
+    this.searchNavTarget.classList.toggle('hidden')
   }
 }

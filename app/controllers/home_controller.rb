@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
 
-  def index; end
+  def index
+    @books = Book.limit(3)
+  end
 end

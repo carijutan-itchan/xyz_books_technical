@@ -2,7 +2,7 @@
   <%= turbo_frame_tag 'page_content' do %>
     <div class="flex flex-col">
       <%= render partial: 'home/partials/section_introduction' %>
-      <%= render partial: 'home/partials/section_explore_books' %>
+      <%= render partial: 'home/partials/section_explore_books', locals: { books: @books } %>
       <%= render partial: 'home/partials/section_reviews' %>
       <%= render partial: 'home/partials/section_faq' %>
     </div>

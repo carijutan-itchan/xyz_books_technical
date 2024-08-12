@@ -8,47 +8,24 @@
   </div>
 
   <div class="flex flex-col mx-auto justify-center lg:flex-row">
-    <div class="flex flex-col tracking-wider mx-4 items-center">
-      <img src="/donuts.png" class="h-auto max-w-sm border-8 border-gray-300 rounded-lg"/>
 
-      <div class="mx-auto">
-        <div class="book-title text-3xl font-bold text-indigo-900 lg:text-gray-50 mt-6 mb-4 text-left ">
-          Doughnuts And Doom
-        </div>
+    <% books.each do |book| %>
+      <div class="flex flex-col tracking-wider mx-4 items-center">
+        <%= image_tag(book.book_cover, class:"h-3/4 max-w-sm border-8 border-gray-300 rounded-lg") %>
 
-        <div class="text-left font-medium text-cyan-500 text-lg">
-          <a href="#">View Book Details <i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-      </div>
-    </div>
+        <div class="mx-auto">
+          <div class="book-title text-3xl font-bold text-indigo-900 lg:text-gray-50 mt-6 mb-4 text-left ">
+            <%= book.title %>
+          </div>
 
-    <div class="flex flex-col tracking-wider mx-4 items-center">
-      <img src="/donuts.png" class="h-auto max-w-sm border-8 border-gray-300 rounded-lg"/>
-
-      <div class="mx-auto">
-        <div class="book-title text-3xl font-bold text-indigo-900 lg:text-gray-50 mt-6 mb-4 text-left">
-          Doughnuts And Doom
-        </div>
-
-        <div class="text-left font-medium text-cyan-500 text-lg">
-          <a href="#">View Book Details <i class="fa-solid fa-chevron-right"></i></a>
+          <div class="text-left font-medium text-cyan-500 text-lg">
+            <%= link_to book_path(id: book.isbn_number_13), data: { turbo_stream: true } do %>
+              View Book Details <i class="fa-solid fa-chevron-right"></i>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="flex flex-col mb-20 tracking-wider mx-4 items-center">
-      <img src="/donuts.png" class="h-auto max-w-sm border-8 border-gray-300 rounded-lg"/>
-
-      <div class="mx-auto">
-        <div class="book-title text-3xl font-bold text-gray-50 mt-6 mb-4 text-left">
-          Doughnuts And Doom
-        </div>
-
-        <div class="text-left font-medium text-cyan-500 text-lg">
-          <a href="#">View Book Details <i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 
   <div class="relative w-full h-auto z-[-1] pb-16">

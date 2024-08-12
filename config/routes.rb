@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   resources :books, only: :show
 
-  get '/', to: 'home#index'
+  get '/', to: 'home#index', as: :home
   get '/loader', to: 'home#loader'
-  get '/error', to: 'home#error'
+  get '/not_found', to: 'home#not_found'
 
   root "home#index"
 end

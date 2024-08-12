@@ -13,17 +13,17 @@ describe Book do
     end
 
     context 'when isbn number is not present' do
-      let(:isbn_number) { nil }
+      let(:isbn_number_13) { nil }
 
-      it { expect(build(:book, isbn_number:)).not_to be_valid }
+      it { expect(build(:book, isbn_number_13:)).not_to be_valid }
     end
 
     context 'when isbn number is duplicated' do
-      before { create(:book, isbn_number: '123123') }
+      before { create(:book, isbn_number_13: '123123') }
 
-      let(:isbn_number) { '123123' }
+      let(:isbn_number_13) { '123123' }
 
-      it { expect(build(:book, isbn_number:)).not_to be_valid }
+      it { expect(build(:book, isbn_number_13:)).not_to be_valid }
     end
 
     context 'when price is not present' do

@@ -13,25 +13,39 @@ Book.destroy_all
 Author.destroy_all
 Publisher.destroy_all
 
-  book1_path = Rails.root.join('db/assets/donuts.png')
-  book2_path = Rails.root.join('db/assets/welder.png')
-  book3_path = Rails.root.join('db/assets/bend.png')
+  book1_path = Rails.root.join('db/seeder_assets/american-elf.jpeg')
+  book2_path = Rails.root.join('db/seeder_assets/cosmok.jpeg')
+  book3_path = Rails.root.join('db/seeder_assets/essex.jpeg')
+  book4_path = Rails.root.join('db/seeder_assets/hey_mister.jpeg')
+  book5_path = Rails.root.join('db/seeder_assets/under_water.jpeg')
 
   signed_blob_1 = ActiveStorage::Blob.create_and_upload!(
     io: File.open(book1_path),
-    filename: 'donuts',
-    content_type: 'image/png:',
+    filename: 'american_elf',
+    content_type: 'image/jpeg:',
   ).signed_id
 
   signed_blob_2 = ActiveStorage::Blob.create_and_upload!(
     io: File.open(book2_path),
-    filename: 'welder',
+    filename: 'cosmok',
     content_type: 'image/png:',
   ).signed_id
 
   signed_blob_3 = ActiveStorage::Blob.create_and_upload!(
     io: File.open(book3_path),
-    filename: 'bend',
+    filename: 'essex',
+    content_type: 'image/png:',
+  ).signed_id
+
+  signed_blob_4 = ActiveStorage::Blob.create_and_upload!(
+    io: File.open(book4_path),
+    filename: 'hey_mister',
+    content_type: 'image/png:',
+  ).signed_id
+
+  signed_blob_5 = ActiveStorage::Blob.create_and_upload!(
+    io: File.open(book5_path),
+    filename: 'under_water',
     content_type: 'image/png:',
   ).signed_id
 
@@ -70,7 +84,7 @@ Publisher.destroy_all
         {
           first_name: 'Rainer',
           middle_name: 'Steel',
-          last_name: 'Rilke,',
+          last_name: 'Rilke',
         },
       ]
     )
@@ -100,6 +114,12 @@ Publisher.destroy_all
 
     book_3_authors = Author.where(last_name: 'Amis')
     book_3_publisher = Publisher.find_by(name: 'Graywolf Press')
+
+    book_4_authors = Author.where(last_name: ['Templer', 'Flagg', 'Paglia'])
+    book_4_publisher = Publisher.find_by(name: 'Graywolf Press')
+
+    book_5_authors = Author.where(last_name: 'Rilke')
+    book_5_publisher = Publisher.find_by(name: "McSweeney's")
 
     Book.create!(
       [
@@ -133,6 +153,27 @@ Publisher.destroy_all
           authors: book_3_authors,
           publisher: book_3_publisher,
           book_cover: signed_blob_3
+        },
+        {
+          title: "Hey, Mister (Vol 1)",
+          isbn_number_13: "9781891830020",
+          isbn_number_10: "1891830023",
+          price: 1200.00,
+          publish_at: "2000-03-21",
+          edition: 'After School Special',
+          authors: book_4_authors,
+          publisher: book_4_publisher,
+          book_cover: signed_blob_4
+        },
+        {
+          title: "The Underwater Welder",
+          isbn_number_13: "9781603093989",
+          isbn_number_10: "1603093982",
+          price: 3000.00,
+          publish_at: "2022-03-21",
+          authors: book_5_authors,
+          publisher: book_5_publisher,
+          book_cover: signed_blob_5
         },
       ]
     )

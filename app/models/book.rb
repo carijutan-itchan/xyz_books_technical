@@ -23,7 +23,7 @@ class Book < ApplicationRecord
 
   def at_least_one_author
     if authors.empty?
-      errors.add(:authors, "need at least one publishers")
+      errors.add(:base, "need at least one authors")
     end
   end
 end
